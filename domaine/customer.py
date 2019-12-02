@@ -1,5 +1,4 @@
 import datetime
-from dateutil.relativedelta import relativedelta
 
 
 class Customer:
@@ -32,7 +31,7 @@ class Customer:
         Calcule l'âge du client en se basant sur la date de naissance
         :return: int qui correspond à l'âge de la personne
         """
-        today = datetime.datetime.today().date()
+        today = datetime.datetime.now()
 
-        age = relativedelta(today, self.date_birth)
-        return age.years
+        age = int(today.year - self.date_birth.year - ((today.month, today.day) < (self.date_birth.month, self.date_birth.day)))
+        return age
